@@ -1,0 +1,73 @@
+function generateTexPortal() {
+    vertPortalStart = points.length;
+    vertPortalEnd = 0;
+    texPortal(1, 0, 3, 2);
+    texPortal(2, 3, 7, 6);
+    texPortal(3, 0, 4, 7);
+    texPortal(4, 5, 6, 7);
+    texPortal(5, 4, 0, 1);
+    texPortal(6, 5, 1, 2);
+}
+
+function texPortal(a, b, c, d) {
+    const vertexPos = [
+        vec4(-0.5, -1.0, -0.5, 1.0),
+        vec4( 0.5, -1.0, -0.5, 1.0),
+        vec4( 0.5,  1.0, -0.5, 1.0),
+        vec4(-0.5,  1.0, -0.5, 1.0),
+        vec4(-0.5, -1.0,  0.5, 1.0),
+        vec4( 0.5, -1.0,  0.5, 1.0),
+        vec4( 0.5,  1.0,  0.5, 1.0),
+        vec4(-0.5,  1.0,  0.5, 1.0)
+    ];
+
+    const vertexNormals = [
+        vec4(-0.57735, -0.57735, -0.57735, 0.0),
+        vec4( 0.57735, -0.57735, -0.57735, 0.0),
+        vec4( 0.57735,  0.57735, -0.57735, 0.0),
+        vec4(-0.57735,  0.57735, -0.57735, 0.0),
+        vec4(-0.57735, -0.57735,  0.57735, 0.0),
+        vec4( 0.57735, -0.57735,  0.57735, 0.0),
+        vec4( 0.57735,  0.57735,  0.57735, 0.0),
+        vec4(-0.57735,  0.57735,  0.57735, 0.0)
+    ];
+
+    const texCoord = [
+        vec2(0, 0),
+        vec2(0, 1),
+        vec2(1, 1),
+        vec2(1, 0)
+    ];
+
+    // two triangles: (a, b, c) and (a, c, d)
+    // solid colored faces
+    points.push(vertexPos[a]);
+    normals.push(vertexNormals[a]);
+    texCoords.push(texCoord[0]);
+    vertCubeEnd++;
+
+    points.push(vertexPos[b]);
+    normals.push(vertexNormals[b]);
+    texCoords.push(texCoord[1]);
+    vertCubeEnd++;
+
+    points.push(vertexPos[c]);
+    normals.push(vertexNormals[c]);
+    texCoords.push(texCoord[2]);
+    vertCubeEnd++;
+
+    points.push(vertexPos[a]);
+    normals.push(vertexNormals[a]);
+    texCoords.push(texCoord[0]);
+    vertCubeEnd++;
+
+    points.push(vertexPos[c]);
+    normals.push(vertexNormals[c]);
+    texCoords.push(texCoord[2]);
+    vertCubeEnd++;
+
+    points.push(vertexPos[d]);
+    normals.push(vertexNormals[d]);
+    texCoords.push(texCoord[3]);
+    vertCubeEnd++;
+}
